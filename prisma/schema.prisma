@@ -130,7 +130,7 @@ model Reviews {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  rating  Int // 1–5, enforce in app logic
+  rating  Int 
   comment String?
 
   createdAt DateTime @default(now())

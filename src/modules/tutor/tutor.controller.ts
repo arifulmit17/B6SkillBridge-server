@@ -13,4 +13,13 @@ const createTutor = async (req:Request, res:Response) => {
     
 }
 
-export const tutorController = { createTutor };
+const getAllTutors = async (req:Request, res:Response) => {
+    try{
+      const result = await tutorService.getAllTutors(); 
+      res.status(200).json(result);
+    }catch(e){
+        res.status(400).json({error: "Tutor fetching failed",details:e});
+    }
+}
+
+export const tutorController = { createTutor, getAllTutors };

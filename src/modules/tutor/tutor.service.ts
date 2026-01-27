@@ -8,4 +8,13 @@ const createTutor = async (data: Omit<TutorProfile, 'id' | 'createdAt' | 'update
     return result;
 }
 
-export const tutorService = { createTutor };
+const getAllTutors= async ()=>{
+    const result =await prisma.tutorProfile.findMany();
+     return result;
+}
+
+export const tutorService = { 
+    createTutor,
+    getAllTutors
+
+ };

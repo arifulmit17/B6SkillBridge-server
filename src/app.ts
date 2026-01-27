@@ -5,6 +5,7 @@ import { toNodeHandler } from 'better-auth/node';
 import { auth } from './lib/auth';
 import { tutorRouter } from './modules/tutor/tutor.router';
 import { categoryRouter } from './modules/category/category.router';
+import { reviewRouter } from './modules/review/review.router';
 
 const app=express();
 
@@ -16,8 +17,9 @@ app.use(express.json());
 
 app.all('/api/auth/{*any}', toNodeHandler(auth));
 
-app.use("/api/tutor",tutorRouter)
-app.use("/api/category",categoryRouter)
+app.use("/api/tutors",tutorRouter)
+app.use("/api/categories",categoryRouter)
+app.use("/api/reviews",reviewRouter)
 
 app.get("/", (req, res) => {
     res.send("Welcome to the SkillBridge Server!");
