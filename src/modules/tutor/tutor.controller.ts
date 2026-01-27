@@ -1,8 +1,6 @@
 
 import { Request, Response } from 'express';
 import { tutorService } from './tutor.service';
-import { auth } from './../../lib/auth';
-import { TutorProfile } from '../../generated/prisma/client';
 
 const createTutor = async (req:Request, res:Response) => {
     try{
