@@ -21,6 +21,7 @@ export const auth = betterAuth({
                 defaultValue:"Unbanned",
                 required: false
             }
+           
         }
     },
     emailAndPassword: { 

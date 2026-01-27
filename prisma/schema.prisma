@@ -8,17 +8,20 @@ datasource db {
 }
 
 model User {
-  id            String    @id
+  id            String        @id
   name          String
-  email         String    @unique
-  emailVerified Boolean   @default(false)
+  email         String        @unique
+  emailVerified Boolean       @default(false)
   image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  role          String?   @default("Student")
-  status        String?   @default("Unbanned")
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  role          String?       @default("Student")
+  status        String?       @default("Unbanned")
+  tutorProfile  TutorProfile?
+  reviews       Reviews[]
   accounts      Account[]
   sessions      Session[]
+  bookings      Booking[]
 
   @@map("user")
 }
@@ -74,4 +77,101 @@ enum Role {
   Student
   Tutor
   Admin
+}
+
+enum TutorStatus {
+  ACTIVE
+  INACTIVE
+}
+
+model TutorProfile {
+  id String @id @default(cuid())
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  hourlyRate Decimal
+  education  String?
+
+  ratingAvg   Float @default(0)
+  ratingCount Int   @default(0)
+
+  reviews           Reviews[]
+  availabilitySlots AvailabilitySlot[]
+  bookings          Booking[]
+
+  isFeatured Boolean     @default(false)
+  status     TutorStatus @default(ACTIVE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id   String @id @default(cuid())
+  name String @unique
+
+  tutors   TutorProfile[]
+  bookings Booking[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Reviews {
+  id String @id @default(cuid())
+
+  tutorId String
+  tutor   TutorProfile @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  rating  Int // 1–5, enforce in app logic
+  comment String?
+
+  createdAt DateTime @default(now())
+}
+
+model AvailabilitySlot {
+  id String @id @default(cuid())
+
+  tutorId String
+  tutor   TutorProfile @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+
+  dayOfWeek Int // 0 = Sunday, 6 = Saturday
+  startTime String // "09:00"
+  endTime   String // "12:00"
+
+  isAvailable Boolean @default(true)
+
+  createdAt DateTime @default(now())
+}
+
+enum SessionStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+model Booking {
+  id      String       @id @default(cuid())
+  tutorId String
+  tutor   TutorProfile @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+
+  studentId String
+  student   User   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  startTime DateTime
+  endTime   DateTime
+
+  status    SessionStatus @default(PENDING) // e.g., PENDING, COMPLETED, CANCELLED
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
 }
