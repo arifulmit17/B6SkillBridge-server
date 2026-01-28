@@ -27,25 +27,19 @@ export type AggregateTutorProfile = {
 }
 
 export type TutorProfileAvgAggregateOutputType = {
-  hourlyRate: runtime.Decimal | null
-  ratingAvg: number | null
-  ratingCount: number | null
+  price: runtime.Decimal | null
 }
 
 export type TutorProfileSumAggregateOutputType = {
-  hourlyRate: runtime.Decimal | null
-  ratingAvg: number | null
-  ratingCount: number | null
+  price: runtime.Decimal | null
 }
 
 export type TutorProfileMinAggregateOutputType = {
   id: string | null
   userId: string | null
   categoryId: string | null
-  hourlyRate: runtime.Decimal | null
-  education: string | null
-  ratingAvg: number | null
-  ratingCount: number | null
+  price: runtime.Decimal | null
+  subject: string | null
   isFeatured: boolean | null
   status: $Enums.TutorStatus | null
   createdAt: Date | null
@@ -56,10 +50,8 @@ export type TutorProfileMaxAggregateOutputType = {
   id: string | null
   userId: string | null
   categoryId: string | null
-  hourlyRate: runtime.Decimal | null
-  education: string | null
-  ratingAvg: number | null
-  ratingCount: number | null
+  price: runtime.Decimal | null
+  subject: string | null
   isFeatured: boolean | null
   status: $Enums.TutorStatus | null
   createdAt: Date | null
@@ -70,10 +62,8 @@ export type TutorProfileCountAggregateOutputType = {
   id: number
   userId: number
   categoryId: number
-  hourlyRate: number
-  education: number
-  ratingAvg: number
-  ratingCount: number
+  price: number
+  subject: number
   isFeatured: number
   status: number
   createdAt: number
@@ -83,25 +73,19 @@ export type TutorProfileCountAggregateOutputType = {
 
 
 export type TutorProfileAvgAggregateInputType = {
-  hourlyRate?: true
-  ratingAvg?: true
-  ratingCount?: true
+  price?: true
 }
 
 export type TutorProfileSumAggregateInputType = {
-  hourlyRate?: true
-  ratingAvg?: true
-  ratingCount?: true
+  price?: true
 }
 
 export type TutorProfileMinAggregateInputType = {
   id?: true
   userId?: true
   categoryId?: true
-  hourlyRate?: true
-  education?: true
-  ratingAvg?: true
-  ratingCount?: true
+  price?: true
+  subject?: true
   isFeatured?: true
   status?: true
   createdAt?: true
@@ -112,10 +96,8 @@ export type TutorProfileMaxAggregateInputType = {
   id?: true
   userId?: true
   categoryId?: true
-  hourlyRate?: true
-  education?: true
-  ratingAvg?: true
-  ratingCount?: true
+  price?: true
+  subject?: true
   isFeatured?: true
   status?: true
   createdAt?: true
@@ -126,10 +108,8 @@ export type TutorProfileCountAggregateInputType = {
   id?: true
   userId?: true
   categoryId?: true
-  hourlyRate?: true
-  education?: true
-  ratingAvg?: true
-  ratingCount?: true
+  price?: true
+  subject?: true
   isFeatured?: true
   status?: true
   createdAt?: true
@@ -227,10 +207,8 @@ export type TutorProfileGroupByOutputType = {
   id: string
   userId: string
   categoryId: string
-  hourlyRate: runtime.Decimal
-  education: string | null
-  ratingAvg: number
-  ratingCount: number
+  price: runtime.Decimal
+  subject: string
   isFeatured: boolean
   status: $Enums.TutorStatus
   createdAt: Date
@@ -264,10 +242,8 @@ export type TutorProfileWhereInput = {
   id?: Prisma.StringFilter<"TutorProfile"> | string
   userId?: Prisma.StringFilter<"TutorProfile"> | string
   categoryId?: Prisma.StringFilter<"TutorProfile"> | string
-  hourlyRate?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.StringNullableFilter<"TutorProfile"> | string | null
-  ratingAvg?: Prisma.FloatFilter<"TutorProfile"> | number
-  ratingCount?: Prisma.IntFilter<"TutorProfile"> | number
+  price?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFilter<"TutorProfile"> | string
   isFeatured?: Prisma.BoolFilter<"TutorProfile"> | boolean
   status?: Prisma.EnumTutorStatusFilter<"TutorProfile"> | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFilter<"TutorProfile"> | Date | string
@@ -283,10 +259,8 @@ export type TutorProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
-  hourlyRate?: Prisma.SortOrder
-  education?: Prisma.SortOrderInput | Prisma.SortOrder
-  ratingAvg?: Prisma.SortOrder
-  ratingCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -305,10 +279,8 @@ export type TutorProfileWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.TutorProfileWhereInput[]
   NOT?: Prisma.TutorProfileWhereInput | Prisma.TutorProfileWhereInput[]
   categoryId?: Prisma.StringFilter<"TutorProfile"> | string
-  hourlyRate?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.StringNullableFilter<"TutorProfile"> | string | null
-  ratingAvg?: Prisma.FloatFilter<"TutorProfile"> | number
-  ratingCount?: Prisma.IntFilter<"TutorProfile"> | number
+  price?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFilter<"TutorProfile"> | string
   isFeatured?: Prisma.BoolFilter<"TutorProfile"> | boolean
   status?: Prisma.EnumTutorStatusFilter<"TutorProfile"> | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFilter<"TutorProfile"> | Date | string
@@ -324,10 +296,8 @@ export type TutorProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
-  hourlyRate?: Prisma.SortOrder
-  education?: Prisma.SortOrderInput | Prisma.SortOrder
-  ratingAvg?: Prisma.SortOrder
-  ratingCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -346,10 +316,8 @@ export type TutorProfileScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
   userId?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
   categoryId?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
-  hourlyRate?: Prisma.DecimalWithAggregatesFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.StringNullableWithAggregatesFilter<"TutorProfile"> | string | null
-  ratingAvg?: Prisma.FloatWithAggregatesFilter<"TutorProfile"> | number
-  ratingCount?: Prisma.IntWithAggregatesFilter<"TutorProfile"> | number
+  price?: Prisma.DecimalWithAggregatesFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
   isFeatured?: Prisma.BoolWithAggregatesFilter<"TutorProfile"> | boolean
   status?: Prisma.EnumTutorStatusWithAggregatesFilter<"TutorProfile"> | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TutorProfile"> | Date | string
@@ -358,10 +326,8 @@ export type TutorProfileScalarWhereWithAggregatesInput = {
 
 export type TutorProfileCreateInput = {
   id?: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -377,10 +343,8 @@ export type TutorProfileUncheckedCreateInput = {
   id?: string
   userId: string
   categoryId: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -392,10 +356,8 @@ export type TutorProfileUncheckedCreateInput = {
 
 export type TutorProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -411,10 +373,8 @@ export type TutorProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -428,10 +388,8 @@ export type TutorProfileCreateManyInput = {
   id?: string
   userId: string
   categoryId: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -440,10 +398,8 @@ export type TutorProfileCreateManyInput = {
 
 export type TutorProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -454,10 +410,8 @@ export type TutorProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -473,10 +427,8 @@ export type TutorProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
-  hourlyRate?: Prisma.SortOrder
-  education?: Prisma.SortOrder
-  ratingAvg?: Prisma.SortOrder
-  ratingCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -484,19 +436,15 @@ export type TutorProfileCountOrderByAggregateInput = {
 }
 
 export type TutorProfileAvgOrderByAggregateInput = {
-  hourlyRate?: Prisma.SortOrder
-  ratingAvg?: Prisma.SortOrder
-  ratingCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
 }
 
 export type TutorProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
-  hourlyRate?: Prisma.SortOrder
-  education?: Prisma.SortOrder
-  ratingAvg?: Prisma.SortOrder
-  ratingCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -507,10 +455,8 @@ export type TutorProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
-  hourlyRate?: Prisma.SortOrder
-  education?: Prisma.SortOrder
-  ratingAvg?: Prisma.SortOrder
-  ratingCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
+  subject?: Prisma.SortOrder
   isFeatured?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -518,9 +464,7 @@ export type TutorProfileMinOrderByAggregateInput = {
 }
 
 export type TutorProfileSumOrderByAggregateInput = {
-  hourlyRate?: Prisma.SortOrder
-  ratingAvg?: Prisma.SortOrder
-  ratingCount?: Prisma.SortOrder
+  price?: Prisma.SortOrder
 }
 
 export type TutorProfileListRelationFilter = {
@@ -576,22 +520,6 @@ export type DecimalFieldUpdateOperationsInput = {
   decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
   multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
   divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
-}
-
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type EnumTutorStatusFieldUpdateOperationsInput = {
@@ -684,10 +612,8 @@ export type TutorProfileUpdateOneRequiredWithoutBookingsNestedInput = {
 
 export type TutorProfileCreateWithoutUserInput = {
   id?: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -701,10 +627,8 @@ export type TutorProfileCreateWithoutUserInput = {
 export type TutorProfileUncheckedCreateWithoutUserInput = {
   id?: string
   categoryId: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -732,10 +656,8 @@ export type TutorProfileUpdateToOneWithWhereWithoutUserInput = {
 
 export type TutorProfileUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -749,10 +671,8 @@ export type TutorProfileUpdateWithoutUserInput = {
 export type TutorProfileUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -764,10 +684,8 @@ export type TutorProfileUncheckedUpdateWithoutUserInput = {
 
 export type TutorProfileCreateWithoutCategoryInput = {
   id?: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -781,10 +699,8 @@ export type TutorProfileCreateWithoutCategoryInput = {
 export type TutorProfileUncheckedCreateWithoutCategoryInput = {
   id?: string
   userId: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -827,10 +743,8 @@ export type TutorProfileScalarWhereInput = {
   id?: Prisma.StringFilter<"TutorProfile"> | string
   userId?: Prisma.StringFilter<"TutorProfile"> | string
   categoryId?: Prisma.StringFilter<"TutorProfile"> | string
-  hourlyRate?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.StringNullableFilter<"TutorProfile"> | string | null
-  ratingAvg?: Prisma.FloatFilter<"TutorProfile"> | number
-  ratingCount?: Prisma.IntFilter<"TutorProfile"> | number
+  price?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFilter<"TutorProfile"> | string
   isFeatured?: Prisma.BoolFilter<"TutorProfile"> | boolean
   status?: Prisma.EnumTutorStatusFilter<"TutorProfile"> | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFilter<"TutorProfile"> | Date | string
@@ -839,10 +753,8 @@ export type TutorProfileScalarWhereInput = {
 
 export type TutorProfileCreateWithoutReviewsInput = {
   id?: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -857,10 +769,8 @@ export type TutorProfileUncheckedCreateWithoutReviewsInput = {
   id?: string
   userId: string
   categoryId: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -887,10 +797,8 @@ export type TutorProfileUpdateToOneWithWhereWithoutReviewsInput = {
 
 export type TutorProfileUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -905,10 +813,8 @@ export type TutorProfileUncheckedUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -919,10 +825,8 @@ export type TutorProfileUncheckedUpdateWithoutReviewsInput = {
 
 export type TutorProfileCreateWithoutAvailabilitySlotsInput = {
   id?: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -937,10 +841,8 @@ export type TutorProfileUncheckedCreateWithoutAvailabilitySlotsInput = {
   id?: string
   userId: string
   categoryId: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -967,10 +869,8 @@ export type TutorProfileUpdateToOneWithWhereWithoutAvailabilitySlotsInput = {
 
 export type TutorProfileUpdateWithoutAvailabilitySlotsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -985,10 +885,8 @@ export type TutorProfileUncheckedUpdateWithoutAvailabilitySlotsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -999,10 +897,8 @@ export type TutorProfileUncheckedUpdateWithoutAvailabilitySlotsInput = {
 
 export type TutorProfileCreateWithoutBookingsInput = {
   id?: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -1017,10 +913,8 @@ export type TutorProfileUncheckedCreateWithoutBookingsInput = {
   id?: string
   userId: string
   categoryId: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -1047,10 +941,8 @@ export type TutorProfileUpdateToOneWithWhereWithoutBookingsInput = {
 
 export type TutorProfileUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1065,10 +957,8 @@ export type TutorProfileUncheckedUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1080,10 +970,8 @@ export type TutorProfileUncheckedUpdateWithoutBookingsInput = {
 export type TutorProfileCreateManyCategoryInput = {
   id?: string
   userId: string
-  hourlyRate: runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: string | null
-  ratingAvg?: number
-  ratingCount?: number
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
   createdAt?: Date | string
@@ -1092,10 +980,8 @@ export type TutorProfileCreateManyCategoryInput = {
 
 export type TutorProfileUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1109,10 +995,8 @@ export type TutorProfileUpdateWithoutCategoryInput = {
 export type TutorProfileUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1125,10 +1009,8 @@ export type TutorProfileUncheckedUpdateWithoutCategoryInput = {
 export type TutorProfileUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  hourlyRate?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  education?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ratingAvg?: Prisma.FloatFieldUpdateOperationsInput | number
-  ratingCount?: Prisma.IntFieldUpdateOperationsInput | number
+  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1188,10 +1070,8 @@ export type TutorProfileSelect<ExtArgs extends runtime.Types.Extensions.Internal
   id?: boolean
   userId?: boolean
   categoryId?: boolean
-  hourlyRate?: boolean
-  education?: boolean
-  ratingAvg?: boolean
-  ratingCount?: boolean
+  price?: boolean
+  subject?: boolean
   isFeatured?: boolean
   status?: boolean
   createdAt?: boolean
@@ -1208,10 +1088,8 @@ export type TutorProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   userId?: boolean
   categoryId?: boolean
-  hourlyRate?: boolean
-  education?: boolean
-  ratingAvg?: boolean
-  ratingCount?: boolean
+  price?: boolean
+  subject?: boolean
   isFeatured?: boolean
   status?: boolean
   createdAt?: boolean
@@ -1224,10 +1102,8 @@ export type TutorProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   userId?: boolean
   categoryId?: boolean
-  hourlyRate?: boolean
-  education?: boolean
-  ratingAvg?: boolean
-  ratingCount?: boolean
+  price?: boolean
+  subject?: boolean
   isFeatured?: boolean
   status?: boolean
   createdAt?: boolean
@@ -1240,17 +1116,15 @@ export type TutorProfileSelectScalar = {
   id?: boolean
   userId?: boolean
   categoryId?: boolean
-  hourlyRate?: boolean
-  education?: boolean
-  ratingAvg?: boolean
-  ratingCount?: boolean
+  price?: boolean
+  subject?: boolean
   isFeatured?: boolean
   status?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TutorProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "categoryId" | "hourlyRate" | "education" | "ratingAvg" | "ratingCount" | "isFeatured" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["tutorProfile"]>
+export type TutorProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "categoryId" | "price" | "subject" | "isFeatured" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["tutorProfile"]>
 export type TutorProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
@@ -1281,10 +1155,8 @@ export type $TutorProfilePayload<ExtArgs extends runtime.Types.Extensions.Intern
     id: string
     userId: string
     categoryId: string
-    hourlyRate: runtime.Decimal
-    education: string | null
-    ratingAvg: number
-    ratingCount: number
+    price: runtime.Decimal
+    subject: string
     isFeatured: boolean
     status: $Enums.TutorStatus
     createdAt: Date
@@ -1720,10 +1592,8 @@ export interface TutorProfileFieldRefs {
   readonly id: Prisma.FieldRef<"TutorProfile", 'String'>
   readonly userId: Prisma.FieldRef<"TutorProfile", 'String'>
   readonly categoryId: Prisma.FieldRef<"TutorProfile", 'String'>
-  readonly hourlyRate: Prisma.FieldRef<"TutorProfile", 'Decimal'>
-  readonly education: Prisma.FieldRef<"TutorProfile", 'String'>
-  readonly ratingAvg: Prisma.FieldRef<"TutorProfile", 'Float'>
-  readonly ratingCount: Prisma.FieldRef<"TutorProfile", 'Int'>
+  readonly price: Prisma.FieldRef<"TutorProfile", 'Decimal'>
+  readonly subject: Prisma.FieldRef<"TutorProfile", 'String'>
   readonly isFeatured: Prisma.FieldRef<"TutorProfile", 'Boolean'>
   readonly status: Prisma.FieldRef<"TutorProfile", 'TutorStatus'>
   readonly createdAt: Prisma.FieldRef<"TutorProfile", 'DateTime'>

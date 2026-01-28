@@ -1181,10 +1181,8 @@ export const TutorProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   categoryId: 'categoryId',
-  hourlyRate: 'hourlyRate',
-  education: 'education',
-  ratingAvg: 'ratingAvg',
-  ratingCount: 'ratingCount',
+  price: 'price',
+  subject: 'subject',
   isFeatured: 'isFeatured',
   status: 'status',
   createdAt: 'createdAt',
@@ -1324,16 +1322,16 @@ export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMo
 
 
 /**
- * Reference to a field of type 'Float'
+ * Reference to a field of type 'TutorStatus'
  */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+export type EnumTutorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TutorStatus'>
     
 
 
 /**
- * Reference to a field of type 'Float[]'
+ * Reference to a field of type 'TutorStatus[]'
  */
-export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+export type ListEnumTutorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TutorStatus[]'>
     
 
 
@@ -1352,20 +1350,6 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
- * Reference to a field of type 'TutorStatus'
- */
-export type EnumTutorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TutorStatus'>
-    
-
-
-/**
- * Reference to a field of type 'TutorStatus[]'
- */
-export type ListEnumTutorStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TutorStatus[]'>
-    
-
-
-/**
  * Reference to a field of type 'SessionStatus'
  */
 export type EnumSessionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SessionStatus'>
@@ -1376,6 +1360,20 @@ export type EnumSessionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Pr
  * Reference to a field of type 'SessionStatus[]'
  */
 export type ListEnumSessionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SessionStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Float'
+ */
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+/**
+ * Reference to a field of type 'Float[]'
+ */
+export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 /**

@@ -93,11 +93,9 @@ model TutorProfile {
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id])
 
-  hourlyRate Decimal
-  education  String?
+  price     Decimal
+  subject   String
 
-  ratingAvg   Float @default(0)
-  ratingCount Int   @default(0)
 
   reviews           Reviews[]
   availabilitySlots AvailabilitySlot[]
