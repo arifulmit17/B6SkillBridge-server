@@ -20,25 +20,15 @@ export type TutorProfileModel = runtime.Types.Result.DefaultSelection<Prisma.$Tu
 
 export type AggregateTutorProfile = {
   _count: TutorProfileCountAggregateOutputType | null
-  _avg: TutorProfileAvgAggregateOutputType | null
-  _sum: TutorProfileSumAggregateOutputType | null
   _min: TutorProfileMinAggregateOutputType | null
   _max: TutorProfileMaxAggregateOutputType | null
-}
-
-export type TutorProfileAvgAggregateOutputType = {
-  price: runtime.Decimal | null
-}
-
-export type TutorProfileSumAggregateOutputType = {
-  price: runtime.Decimal | null
 }
 
 export type TutorProfileMinAggregateOutputType = {
   id: string | null
   userId: string | null
   categoryId: string | null
-  price: runtime.Decimal | null
+  price: string | null
   subject: string | null
   isFeatured: boolean | null
   status: $Enums.TutorStatus | null
@@ -50,7 +40,7 @@ export type TutorProfileMaxAggregateOutputType = {
   id: string | null
   userId: string | null
   categoryId: string | null
-  price: runtime.Decimal | null
+  price: string | null
   subject: string | null
   isFeatured: boolean | null
   status: $Enums.TutorStatus | null
@@ -71,14 +61,6 @@ export type TutorProfileCountAggregateOutputType = {
   _all: number
 }
 
-
-export type TutorProfileAvgAggregateInputType = {
-  price?: true
-}
-
-export type TutorProfileSumAggregateInputType = {
-  price?: true
-}
 
 export type TutorProfileMinAggregateInputType = {
   id?: true
@@ -155,18 +137,6 @@ export type TutorProfileAggregateArgs<ExtArgs extends runtime.Types.Extensions.I
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: TutorProfileAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: TutorProfileSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: TutorProfileMinAggregateInputType
@@ -197,8 +167,6 @@ export type TutorProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
   take?: number
   skip?: number
   _count?: TutorProfileCountAggregateInputType | true
-  _avg?: TutorProfileAvgAggregateInputType
-  _sum?: TutorProfileSumAggregateInputType
   _min?: TutorProfileMinAggregateInputType
   _max?: TutorProfileMaxAggregateInputType
 }
@@ -207,15 +175,13 @@ export type TutorProfileGroupByOutputType = {
   id: string
   userId: string
   categoryId: string
-  price: runtime.Decimal
+  price: string
   subject: string
   isFeatured: boolean
   status: $Enums.TutorStatus
   createdAt: Date
   updatedAt: Date
   _count: TutorProfileCountAggregateOutputType | null
-  _avg: TutorProfileAvgAggregateOutputType | null
-  _sum: TutorProfileSumAggregateOutputType | null
   _min: TutorProfileMinAggregateOutputType | null
   _max: TutorProfileMaxAggregateOutputType | null
 }
@@ -242,7 +208,7 @@ export type TutorProfileWhereInput = {
   id?: Prisma.StringFilter<"TutorProfile"> | string
   userId?: Prisma.StringFilter<"TutorProfile"> | string
   categoryId?: Prisma.StringFilter<"TutorProfile"> | string
-  price?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFilter<"TutorProfile"> | string
   subject?: Prisma.StringFilter<"TutorProfile"> | string
   isFeatured?: Prisma.BoolFilter<"TutorProfile"> | boolean
   status?: Prisma.EnumTutorStatusFilter<"TutorProfile"> | $Enums.TutorStatus
@@ -279,7 +245,7 @@ export type TutorProfileWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.TutorProfileWhereInput[]
   NOT?: Prisma.TutorProfileWhereInput | Prisma.TutorProfileWhereInput[]
   categoryId?: Prisma.StringFilter<"TutorProfile"> | string
-  price?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFilter<"TutorProfile"> | string
   subject?: Prisma.StringFilter<"TutorProfile"> | string
   isFeatured?: Prisma.BoolFilter<"TutorProfile"> | boolean
   status?: Prisma.EnumTutorStatusFilter<"TutorProfile"> | $Enums.TutorStatus
@@ -303,10 +269,8 @@ export type TutorProfileOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TutorProfileCountOrderByAggregateInput
-  _avg?: Prisma.TutorProfileAvgOrderByAggregateInput
   _max?: Prisma.TutorProfileMaxOrderByAggregateInput
   _min?: Prisma.TutorProfileMinOrderByAggregateInput
-  _sum?: Prisma.TutorProfileSumOrderByAggregateInput
 }
 
 export type TutorProfileScalarWhereWithAggregatesInput = {
@@ -316,7 +280,7 @@ export type TutorProfileScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
   userId?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
   categoryId?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
-  price?: Prisma.DecimalWithAggregatesFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
   subject?: Prisma.StringWithAggregatesFilter<"TutorProfile"> | string
   isFeatured?: Prisma.BoolWithAggregatesFilter<"TutorProfile"> | boolean
   status?: Prisma.EnumTutorStatusWithAggregatesFilter<"TutorProfile"> | $Enums.TutorStatus
@@ -326,7 +290,7 @@ export type TutorProfileScalarWhereWithAggregatesInput = {
 
 export type TutorProfileCreateInput = {
   id?: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -343,7 +307,7 @@ export type TutorProfileUncheckedCreateInput = {
   id?: string
   userId: string
   categoryId: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -356,7 +320,7 @@ export type TutorProfileUncheckedCreateInput = {
 
 export type TutorProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -373,7 +337,7 @@ export type TutorProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -388,7 +352,7 @@ export type TutorProfileCreateManyInput = {
   id?: string
   userId: string
   categoryId: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -398,7 +362,7 @@ export type TutorProfileCreateManyInput = {
 
 export type TutorProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -410,7 +374,7 @@ export type TutorProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -435,10 +399,6 @@ export type TutorProfileCountOrderByAggregateInput = {
   updatedAt?: Prisma.SortOrder
 }
 
-export type TutorProfileAvgOrderByAggregateInput = {
-  price?: Prisma.SortOrder
-}
-
 export type TutorProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
@@ -461,10 +421,6 @@ export type TutorProfileMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
-}
-
-export type TutorProfileSumOrderByAggregateInput = {
-  price?: Prisma.SortOrder
 }
 
 export type TutorProfileListRelationFilter = {
@@ -512,14 +468,6 @@ export type TutorProfileUncheckedUpdateOneWithoutUserNestedInput = {
   delete?: Prisma.TutorProfileWhereInput | boolean
   connect?: Prisma.TutorProfileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.TutorProfileUpdateToOneWithWhereWithoutUserInput, Prisma.TutorProfileUpdateWithoutUserInput>, Prisma.TutorProfileUncheckedUpdateWithoutUserInput>
-}
-
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type EnumTutorStatusFieldUpdateOperationsInput = {
@@ -612,7 +560,7 @@ export type TutorProfileUpdateOneRequiredWithoutBookingsNestedInput = {
 
 export type TutorProfileCreateWithoutUserInput = {
   id?: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -627,7 +575,7 @@ export type TutorProfileCreateWithoutUserInput = {
 export type TutorProfileUncheckedCreateWithoutUserInput = {
   id?: string
   categoryId: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -656,7 +604,7 @@ export type TutorProfileUpdateToOneWithWhereWithoutUserInput = {
 
 export type TutorProfileUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -671,7 +619,7 @@ export type TutorProfileUpdateWithoutUserInput = {
 export type TutorProfileUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -684,7 +632,7 @@ export type TutorProfileUncheckedUpdateWithoutUserInput = {
 
 export type TutorProfileCreateWithoutCategoryInput = {
   id?: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -699,7 +647,7 @@ export type TutorProfileCreateWithoutCategoryInput = {
 export type TutorProfileUncheckedCreateWithoutCategoryInput = {
   id?: string
   userId: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -743,7 +691,7 @@ export type TutorProfileScalarWhereInput = {
   id?: Prisma.StringFilter<"TutorProfile"> | string
   userId?: Prisma.StringFilter<"TutorProfile"> | string
   categoryId?: Prisma.StringFilter<"TutorProfile"> | string
-  price?: Prisma.DecimalFilter<"TutorProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFilter<"TutorProfile"> | string
   subject?: Prisma.StringFilter<"TutorProfile"> | string
   isFeatured?: Prisma.BoolFilter<"TutorProfile"> | boolean
   status?: Prisma.EnumTutorStatusFilter<"TutorProfile"> | $Enums.TutorStatus
@@ -753,7 +701,7 @@ export type TutorProfileScalarWhereInput = {
 
 export type TutorProfileCreateWithoutReviewsInput = {
   id?: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -769,7 +717,7 @@ export type TutorProfileUncheckedCreateWithoutReviewsInput = {
   id?: string
   userId: string
   categoryId: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -797,7 +745,7 @@ export type TutorProfileUpdateToOneWithWhereWithoutReviewsInput = {
 
 export type TutorProfileUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -813,7 +761,7 @@ export type TutorProfileUncheckedUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -825,7 +773,7 @@ export type TutorProfileUncheckedUpdateWithoutReviewsInput = {
 
 export type TutorProfileCreateWithoutAvailabilitySlotsInput = {
   id?: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -841,7 +789,7 @@ export type TutorProfileUncheckedCreateWithoutAvailabilitySlotsInput = {
   id?: string
   userId: string
   categoryId: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -869,7 +817,7 @@ export type TutorProfileUpdateToOneWithWhereWithoutAvailabilitySlotsInput = {
 
 export type TutorProfileUpdateWithoutAvailabilitySlotsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -885,7 +833,7 @@ export type TutorProfileUncheckedUpdateWithoutAvailabilitySlotsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -897,7 +845,7 @@ export type TutorProfileUncheckedUpdateWithoutAvailabilitySlotsInput = {
 
 export type TutorProfileCreateWithoutBookingsInput = {
   id?: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -913,7 +861,7 @@ export type TutorProfileUncheckedCreateWithoutBookingsInput = {
   id?: string
   userId: string
   categoryId: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -941,7 +889,7 @@ export type TutorProfileUpdateToOneWithWhereWithoutBookingsInput = {
 
 export type TutorProfileUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -957,7 +905,7 @@ export type TutorProfileUncheckedUpdateWithoutBookingsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -970,7 +918,7 @@ export type TutorProfileUncheckedUpdateWithoutBookingsInput = {
 export type TutorProfileCreateManyCategoryInput = {
   id?: string
   userId: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price: string
   subject: string
   isFeatured?: boolean
   status?: $Enums.TutorStatus
@@ -980,7 +928,7 @@ export type TutorProfileCreateManyCategoryInput = {
 
 export type TutorProfileUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -995,7 +943,7 @@ export type TutorProfileUpdateWithoutCategoryInput = {
 export type TutorProfileUncheckedUpdateWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -1009,7 +957,7 @@ export type TutorProfileUncheckedUpdateWithoutCategoryInput = {
 export type TutorProfileUncheckedUpdateManyWithoutCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: Prisma.StringFieldUpdateOperationsInput | string
   subject?: Prisma.StringFieldUpdateOperationsInput | string
   isFeatured?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumTutorStatusFieldUpdateOperationsInput | $Enums.TutorStatus
@@ -1155,7 +1103,7 @@ export type $TutorProfilePayload<ExtArgs extends runtime.Types.Extensions.Intern
     id: string
     userId: string
     categoryId: string
-    price: runtime.Decimal
+    price: string
     subject: string
     isFeatured: boolean
     status: $Enums.TutorStatus
@@ -1592,7 +1540,7 @@ export interface TutorProfileFieldRefs {
   readonly id: Prisma.FieldRef<"TutorProfile", 'String'>
   readonly userId: Prisma.FieldRef<"TutorProfile", 'String'>
   readonly categoryId: Prisma.FieldRef<"TutorProfile", 'String'>
-  readonly price: Prisma.FieldRef<"TutorProfile", 'Decimal'>
+  readonly price: Prisma.FieldRef<"TutorProfile", 'String'>
   readonly subject: Prisma.FieldRef<"TutorProfile", 'String'>
   readonly isFeatured: Prisma.FieldRef<"TutorProfile", 'Boolean'>
   readonly status: Prisma.FieldRef<"TutorProfile", 'TutorStatus'>

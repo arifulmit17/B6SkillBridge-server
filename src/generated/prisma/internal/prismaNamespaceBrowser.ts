@@ -179,8 +179,6 @@ export const AvailabilitySlotScalarFieldEnum = {
   id: 'id',
   tutorId: 'tutorId',
   dayOfWeek: 'dayOfWeek',
-  startTime: 'startTime',
-  endTime: 'endTime',
   isAvailable: 'isAvailable',
   createdAt: 'createdAt'
 } as const

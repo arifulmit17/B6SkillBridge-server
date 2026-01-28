@@ -20,26 +20,14 @@ export type AvailabilitySlotModel = runtime.Types.Result.DefaultSelection<Prisma
 
 export type AggregateAvailabilitySlot = {
   _count: AvailabilitySlotCountAggregateOutputType | null
-  _avg: AvailabilitySlotAvgAggregateOutputType | null
-  _sum: AvailabilitySlotSumAggregateOutputType | null
   _min: AvailabilitySlotMinAggregateOutputType | null
   _max: AvailabilitySlotMaxAggregateOutputType | null
-}
-
-export type AvailabilitySlotAvgAggregateOutputType = {
-  dayOfWeek: number | null
-}
-
-export type AvailabilitySlotSumAggregateOutputType = {
-  dayOfWeek: number | null
 }
 
 export type AvailabilitySlotMinAggregateOutputType = {
   id: string | null
   tutorId: string | null
-  dayOfWeek: number | null
-  startTime: string | null
-  endTime: string | null
+  dayOfWeek: string | null
   isAvailable: boolean | null
   createdAt: Date | null
 }
@@ -47,9 +35,7 @@ export type AvailabilitySlotMinAggregateOutputType = {
 export type AvailabilitySlotMaxAggregateOutputType = {
   id: string | null
   tutorId: string | null
-  dayOfWeek: number | null
-  startTime: string | null
-  endTime: string | null
+  dayOfWeek: string | null
   isAvailable: boolean | null
   createdAt: Date | null
 }
@@ -58,28 +44,16 @@ export type AvailabilitySlotCountAggregateOutputType = {
   id: number
   tutorId: number
   dayOfWeek: number
-  startTime: number
-  endTime: number
   isAvailable: number
   createdAt: number
   _all: number
 }
 
 
-export type AvailabilitySlotAvgAggregateInputType = {
-  dayOfWeek?: true
-}
-
-export type AvailabilitySlotSumAggregateInputType = {
-  dayOfWeek?: true
-}
-
 export type AvailabilitySlotMinAggregateInputType = {
   id?: true
   tutorId?: true
   dayOfWeek?: true
-  startTime?: true
-  endTime?: true
   isAvailable?: true
   createdAt?: true
 }
@@ -88,8 +62,6 @@ export type AvailabilitySlotMaxAggregateInputType = {
   id?: true
   tutorId?: true
   dayOfWeek?: true
-  startTime?: true
-  endTime?: true
   isAvailable?: true
   createdAt?: true
 }
@@ -98,8 +70,6 @@ export type AvailabilitySlotCountAggregateInputType = {
   id?: true
   tutorId?: true
   dayOfWeek?: true
-  startTime?: true
-  endTime?: true
   isAvailable?: true
   createdAt?: true
   _all?: true
@@ -143,18 +113,6 @@ export type AvailabilitySlotAggregateArgs<ExtArgs extends runtime.Types.Extensio
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Select which fields to average
-  **/
-  _avg?: AvailabilitySlotAvgAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
-   * Select which fields to sum
-  **/
-  _sum?: AvailabilitySlotSumAggregateInputType
-  /**
-   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-   * 
    * Select which fields to find the minimum value
   **/
   _min?: AvailabilitySlotMinAggregateInputType
@@ -185,8 +143,6 @@ export type AvailabilitySlotGroupByArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   _count?: AvailabilitySlotCountAggregateInputType | true
-  _avg?: AvailabilitySlotAvgAggregateInputType
-  _sum?: AvailabilitySlotSumAggregateInputType
   _min?: AvailabilitySlotMinAggregateInputType
   _max?: AvailabilitySlotMaxAggregateInputType
 }
@@ -194,14 +150,10 @@ export type AvailabilitySlotGroupByArgs<ExtArgs extends runtime.Types.Extensions
 export type AvailabilitySlotGroupByOutputType = {
   id: string
   tutorId: string
-  dayOfWeek: number
-  startTime: string
-  endTime: string
+  dayOfWeek: string
   isAvailable: boolean
   createdAt: Date
   _count: AvailabilitySlotCountAggregateOutputType | null
-  _avg: AvailabilitySlotAvgAggregateOutputType | null
-  _sum: AvailabilitySlotSumAggregateOutputType | null
   _min: AvailabilitySlotMinAggregateOutputType | null
   _max: AvailabilitySlotMaxAggregateOutputType | null
 }
@@ -227,9 +179,7 @@ export type AvailabilitySlotWhereInput = {
   NOT?: Prisma.AvailabilitySlotWhereInput | Prisma.AvailabilitySlotWhereInput[]
   id?: Prisma.StringFilter<"AvailabilitySlot"> | string
   tutorId?: Prisma.StringFilter<"AvailabilitySlot"> | string
-  dayOfWeek?: Prisma.IntFilter<"AvailabilitySlot"> | number
-  startTime?: Prisma.StringFilter<"AvailabilitySlot"> | string
-  endTime?: Prisma.StringFilter<"AvailabilitySlot"> | string
+  dayOfWeek?: Prisma.StringFilter<"AvailabilitySlot"> | string
   isAvailable?: Prisma.BoolFilter<"AvailabilitySlot"> | boolean
   createdAt?: Prisma.DateTimeFilter<"AvailabilitySlot"> | Date | string
   tutor?: Prisma.XOR<Prisma.TutorProfileScalarRelationFilter, Prisma.TutorProfileWhereInput>
@@ -239,8 +189,6 @@ export type AvailabilitySlotOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   dayOfWeek?: Prisma.SortOrder
-  startTime?: Prisma.SortOrder
-  endTime?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   tutor?: Prisma.TutorProfileOrderByWithRelationInput
@@ -252,9 +200,7 @@ export type AvailabilitySlotWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.AvailabilitySlotWhereInput[]
   NOT?: Prisma.AvailabilitySlotWhereInput | Prisma.AvailabilitySlotWhereInput[]
   tutorId?: Prisma.StringFilter<"AvailabilitySlot"> | string
-  dayOfWeek?: Prisma.IntFilter<"AvailabilitySlot"> | number
-  startTime?: Prisma.StringFilter<"AvailabilitySlot"> | string
-  endTime?: Prisma.StringFilter<"AvailabilitySlot"> | string
+  dayOfWeek?: Prisma.StringFilter<"AvailabilitySlot"> | string
   isAvailable?: Prisma.BoolFilter<"AvailabilitySlot"> | boolean
   createdAt?: Prisma.DateTimeFilter<"AvailabilitySlot"> | Date | string
   tutor?: Prisma.XOR<Prisma.TutorProfileScalarRelationFilter, Prisma.TutorProfileWhereInput>
@@ -264,15 +210,11 @@ export type AvailabilitySlotOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   dayOfWeek?: Prisma.SortOrder
-  startTime?: Prisma.SortOrder
-  endTime?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.AvailabilitySlotCountOrderByAggregateInput
-  _avg?: Prisma.AvailabilitySlotAvgOrderByAggregateInput
   _max?: Prisma.AvailabilitySlotMaxOrderByAggregateInput
   _min?: Prisma.AvailabilitySlotMinOrderByAggregateInput
-  _sum?: Prisma.AvailabilitySlotSumOrderByAggregateInput
 }
 
 export type AvailabilitySlotScalarWhereWithAggregatesInput = {
@@ -281,18 +223,14 @@ export type AvailabilitySlotScalarWhereWithAggregatesInput = {
   NOT?: Prisma.AvailabilitySlotScalarWhereWithAggregatesInput | Prisma.AvailabilitySlotScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"AvailabilitySlot"> | string
   tutorId?: Prisma.StringWithAggregatesFilter<"AvailabilitySlot"> | string
-  dayOfWeek?: Prisma.IntWithAggregatesFilter<"AvailabilitySlot"> | number
-  startTime?: Prisma.StringWithAggregatesFilter<"AvailabilitySlot"> | string
-  endTime?: Prisma.StringWithAggregatesFilter<"AvailabilitySlot"> | string
+  dayOfWeek?: Prisma.StringWithAggregatesFilter<"AvailabilitySlot"> | string
   isAvailable?: Prisma.BoolWithAggregatesFilter<"AvailabilitySlot"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AvailabilitySlot"> | Date | string
 }
 
 export type AvailabilitySlotCreateInput = {
   id?: string
-  dayOfWeek: number
-  startTime: string
-  endTime: string
+  dayOfWeek: string
   isAvailable?: boolean
   createdAt?: Date | string
   tutor: Prisma.TutorProfileCreateNestedOneWithoutAvailabilitySlotsInput
@@ -301,18 +239,14 @@ export type AvailabilitySlotCreateInput = {
 export type AvailabilitySlotUncheckedCreateInput = {
   id?: string
   tutorId: string
-  dayOfWeek: number
-  startTime: string
-  endTime: string
+  dayOfWeek: string
   isAvailable?: boolean
   createdAt?: Date | string
 }
 
 export type AvailabilitySlotUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  dayOfWeek?: Prisma.IntFieldUpdateOperationsInput | number
-  startTime?: Prisma.StringFieldUpdateOperationsInput | string
-  endTime?: Prisma.StringFieldUpdateOperationsInput | string
+  dayOfWeek?: Prisma.StringFieldUpdateOperationsInput | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tutor?: Prisma.TutorProfileUpdateOneRequiredWithoutAvailabilitySlotsNestedInput
@@ -321,9 +255,7 @@ export type AvailabilitySlotUpdateInput = {
 export type AvailabilitySlotUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dayOfWeek?: Prisma.IntFieldUpdateOperationsInput | number
-  startTime?: Prisma.StringFieldUpdateOperationsInput | string
-  endTime?: Prisma.StringFieldUpdateOperationsInput | string
+  dayOfWeek?: Prisma.StringFieldUpdateOperationsInput | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -331,18 +263,14 @@ export type AvailabilitySlotUncheckedUpdateInput = {
 export type AvailabilitySlotCreateManyInput = {
   id?: string
   tutorId: string
-  dayOfWeek: number
-  startTime: string
-  endTime: string
+  dayOfWeek: string
   isAvailable?: boolean
   createdAt?: Date | string
 }
 
 export type AvailabilitySlotUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  dayOfWeek?: Prisma.IntFieldUpdateOperationsInput | number
-  startTime?: Prisma.StringFieldUpdateOperationsInput | string
-  endTime?: Prisma.StringFieldUpdateOperationsInput | string
+  dayOfWeek?: Prisma.StringFieldUpdateOperationsInput | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -350,9 +278,7 @@ export type AvailabilitySlotUpdateManyMutationInput = {
 export type AvailabilitySlotUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   tutorId?: Prisma.StringFieldUpdateOperationsInput | string
-  dayOfWeek?: Prisma.IntFieldUpdateOperationsInput | number
-  startTime?: Prisma.StringFieldUpdateOperationsInput | string
-  endTime?: Prisma.StringFieldUpdateOperationsInput | string
+  dayOfWeek?: Prisma.StringFieldUpdateOperationsInput | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -371,22 +297,14 @@ export type AvailabilitySlotCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   dayOfWeek?: Prisma.SortOrder
-  startTime?: Prisma.SortOrder
-  endTime?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-}
-
-export type AvailabilitySlotAvgOrderByAggregateInput = {
-  dayOfWeek?: Prisma.SortOrder
 }
 
 export type AvailabilitySlotMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   dayOfWeek?: Prisma.SortOrder
-  startTime?: Prisma.SortOrder
-  endTime?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -395,14 +313,8 @@ export type AvailabilitySlotMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   tutorId?: Prisma.SortOrder
   dayOfWeek?: Prisma.SortOrder
-  startTime?: Prisma.SortOrder
-  endTime?: Prisma.SortOrder
   isAvailable?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
-}
-
-export type AvailabilitySlotSumOrderByAggregateInput = {
-  dayOfWeek?: Prisma.SortOrder
 }
 
 export type AvailabilitySlotCreateNestedManyWithoutTutorInput = {
@@ -449,18 +361,14 @@ export type AvailabilitySlotUncheckedUpdateManyWithoutTutorNestedInput = {
 
 export type AvailabilitySlotCreateWithoutTutorInput = {
   id?: string
-  dayOfWeek: number
-  startTime: string
-  endTime: string
+  dayOfWeek: string
   isAvailable?: boolean
   createdAt?: Date | string
 }
 
 export type AvailabilitySlotUncheckedCreateWithoutTutorInput = {
   id?: string
-  dayOfWeek: number
-  startTime: string
-  endTime: string
+  dayOfWeek: string
   isAvailable?: boolean
   createdAt?: Date | string
 }
@@ -497,45 +405,35 @@ export type AvailabilitySlotScalarWhereInput = {
   NOT?: Prisma.AvailabilitySlotScalarWhereInput | Prisma.AvailabilitySlotScalarWhereInput[]
   id?: Prisma.StringFilter<"AvailabilitySlot"> | string
   tutorId?: Prisma.StringFilter<"AvailabilitySlot"> | string
-  dayOfWeek?: Prisma.IntFilter<"AvailabilitySlot"> | number
-  startTime?: Prisma.StringFilter<"AvailabilitySlot"> | string
-  endTime?: Prisma.StringFilter<"AvailabilitySlot"> | string
+  dayOfWeek?: Prisma.StringFilter<"AvailabilitySlot"> | string
   isAvailable?: Prisma.BoolFilter<"AvailabilitySlot"> | boolean
   createdAt?: Prisma.DateTimeFilter<"AvailabilitySlot"> | Date | string
 }
 
 export type AvailabilitySlotCreateManyTutorInput = {
   id?: string
-  dayOfWeek: number
-  startTime: string
-  endTime: string
+  dayOfWeek: string
   isAvailable?: boolean
   createdAt?: Date | string
 }
 
 export type AvailabilitySlotUpdateWithoutTutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  dayOfWeek?: Prisma.IntFieldUpdateOperationsInput | number
-  startTime?: Prisma.StringFieldUpdateOperationsInput | string
-  endTime?: Prisma.StringFieldUpdateOperationsInput | string
+  dayOfWeek?: Prisma.StringFieldUpdateOperationsInput | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvailabilitySlotUncheckedUpdateWithoutTutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  dayOfWeek?: Prisma.IntFieldUpdateOperationsInput | number
-  startTime?: Prisma.StringFieldUpdateOperationsInput | string
-  endTime?: Prisma.StringFieldUpdateOperationsInput | string
+  dayOfWeek?: Prisma.StringFieldUpdateOperationsInput | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type AvailabilitySlotUncheckedUpdateManyWithoutTutorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  dayOfWeek?: Prisma.IntFieldUpdateOperationsInput | number
-  startTime?: Prisma.StringFieldUpdateOperationsInput | string
-  endTime?: Prisma.StringFieldUpdateOperationsInput | string
+  dayOfWeek?: Prisma.StringFieldUpdateOperationsInput | string
   isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -546,8 +444,6 @@ export type AvailabilitySlotSelect<ExtArgs extends runtime.Types.Extensions.Inte
   id?: boolean
   tutorId?: boolean
   dayOfWeek?: boolean
-  startTime?: boolean
-  endTime?: boolean
   isAvailable?: boolean
   createdAt?: boolean
   tutor?: boolean | Prisma.TutorProfileDefaultArgs<ExtArgs>
@@ -557,8 +453,6 @@ export type AvailabilitySlotSelectCreateManyAndReturn<ExtArgs extends runtime.Ty
   id?: boolean
   tutorId?: boolean
   dayOfWeek?: boolean
-  startTime?: boolean
-  endTime?: boolean
   isAvailable?: boolean
   createdAt?: boolean
   tutor?: boolean | Prisma.TutorProfileDefaultArgs<ExtArgs>
@@ -568,8 +462,6 @@ export type AvailabilitySlotSelectUpdateManyAndReturn<ExtArgs extends runtime.Ty
   id?: boolean
   tutorId?: boolean
   dayOfWeek?: boolean
-  startTime?: boolean
-  endTime?: boolean
   isAvailable?: boolean
   createdAt?: boolean
   tutor?: boolean | Prisma.TutorProfileDefaultArgs<ExtArgs>
@@ -579,13 +471,11 @@ export type AvailabilitySlotSelectScalar = {
   id?: boolean
   tutorId?: boolean
   dayOfWeek?: boolean
-  startTime?: boolean
-  endTime?: boolean
   isAvailable?: boolean
   createdAt?: boolean
 }
 
-export type AvailabilitySlotOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tutorId" | "dayOfWeek" | "startTime" | "endTime" | "isAvailable" | "createdAt", ExtArgs["result"]["availabilitySlot"]>
+export type AvailabilitySlotOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "tutorId" | "dayOfWeek" | "isAvailable" | "createdAt", ExtArgs["result"]["availabilitySlot"]>
 export type AvailabilitySlotInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   tutor?: boolean | Prisma.TutorProfileDefaultArgs<ExtArgs>
 }
@@ -604,9 +494,7 @@ export type $AvailabilitySlotPayload<ExtArgs extends runtime.Types.Extensions.In
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     tutorId: string
-    dayOfWeek: number
-    startTime: string
-    endTime: string
+    dayOfWeek: string
     isAvailable: boolean
     createdAt: Date
   }, ExtArgs["result"]["availabilitySlot"]>
@@ -1035,9 +923,7 @@ export interface Prisma__AvailabilitySlotClient<T, Null = never, ExtArgs extends
 export interface AvailabilitySlotFieldRefs {
   readonly id: Prisma.FieldRef<"AvailabilitySlot", 'String'>
   readonly tutorId: Prisma.FieldRef<"AvailabilitySlot", 'String'>
-  readonly dayOfWeek: Prisma.FieldRef<"AvailabilitySlot", 'Int'>
-  readonly startTime: Prisma.FieldRef<"AvailabilitySlot", 'String'>
-  readonly endTime: Prisma.FieldRef<"AvailabilitySlot", 'String'>
+  readonly dayOfWeek: Prisma.FieldRef<"AvailabilitySlot", 'String'>
   readonly isAvailable: Prisma.FieldRef<"AvailabilitySlot", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"AvailabilitySlot", 'DateTime'>
 }

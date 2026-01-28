@@ -15,7 +15,9 @@ const createTutor = async (req:Request, res:Response) => {
 
 const getAllTutors = async (req:Request, res:Response) => {
     try{
-      const result = await tutorService.getAllTutors(); 
+        const {search}=req.query;
+        const searchString = typeof search === 'string' ? search : undefined;
+      const result = await tutorService.getAllTutors({search: searchString}); 
       res.status(200).json(result);
     }catch(e){
         res.status(400).json({error: "Tutor fetching failed",details:e});

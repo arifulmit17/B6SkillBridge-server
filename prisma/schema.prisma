@@ -93,7 +93,7 @@ model TutorProfile {
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id])
 
-  price     Decimal
+  price     String
   subject   String
 
 
@@ -128,7 +128,7 @@ model Reviews {
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  rating  Int 
+  rating  String 
   comment String?
 
   createdAt DateTime @default(now())
@@ -140,9 +140,7 @@ model AvailabilitySlot {
   tutorId String
   tutor   TutorProfile @relation(fields: [tutorId], references: [id], onDelete: Cascade)
 
-  dayOfWeek Int // 0 = Sunday, 6 = Saturday
-  startTime String // "09:00"
-  endTime   String // "12:00"
+  dayOfWeek String
 
   isAvailable Boolean @default(true)
 
