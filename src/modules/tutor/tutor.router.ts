@@ -3,6 +3,7 @@ import { tutorController } from './tutor.controller';
 
 const router = express.Router();
 router.get('/', tutorController.getAllTutors);
+router.get('/:id', tutorController.getTutorById);
 router.post('/', tutorController.createTutor);
 
 
