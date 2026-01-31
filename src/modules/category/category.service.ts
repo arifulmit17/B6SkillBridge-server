@@ -9,4 +9,10 @@ const createCategory = async (data: Omit<Category, 'id' | 'createdAt' | 'updated
     return result;
 }
 
-export const categoryService = { createCategory };
+const getAllCategories = async () => {
+    const result = await prisma.category.findMany();
+    return result;
+}
+
+export const categoryService = { createCategory,getAllCategories };
+

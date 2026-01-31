@@ -9,4 +9,12 @@ const createReview = async (data: Omit<Reviews, 'id' | 'createdAt' | 'updatedAt'
     return result;
 }
 
-export const reviewService = { createReview };
+ const getReviewsByTutorId=async (tutorId:string)=>{
+    const result= await prisma.reviews.findMany({
+        where:{tutorId}
+    }
+    )
+    return result;
+ }
+
+export const reviewService = { createReview,getReviewsByTutorId };

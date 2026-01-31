@@ -4,7 +4,7 @@ import { reviewController } from './review.controller';
 
 
 const router = express.Router();
-
+router.get('/',reviewController.getReviewsByTutorId);
 router.post('/', reviewController.createReview);
 
 export const reviewRouter = router;

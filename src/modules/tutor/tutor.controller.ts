@@ -25,7 +25,7 @@ const getAllTutors = async (req:Request, res:Response) => {
         const isFeatured=req.query.isFeatured? req.query.isFeatured === 'true': undefined;
         
       const result = await tutorService.getAllTutors({search: searchString,category:filterString,isFeatured}); 
-      console.log(search,category);
+     
       res.status(200).json(result);
     }catch(e){
         res.status(400).json({error: "Tutor fetching failed",details:e});

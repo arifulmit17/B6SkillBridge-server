@@ -10,81 +10,98 @@ const createTutor = async (data: Omit<TutorProfile, 'id' | 'createdAt' | 'update
     return result;
 }
 // search by subject, price, rating
-const getAllTutors= async ({search,category,isFeatured}:{search: string | undefined,category: string | undefined,isFeatured?: boolean | undefined})=>{
-    
-    const andConditions:TutorProfileWhereInput[]=[];
-    
-    if(search){
-        andConditions.push({ OR:[
-                {
-            subject: {
-                contains: search as string,
-                mode: 'insensitive'
-            }
-                },
-                {
-            price: {
-                contains: search as string,
-                mode: 'insensitive'
-            }
-                },
-                {
-                    reviews:{
+
+
+const getAllTutors = async ({
+  search,
+  category,
+  isFeatured,
+}: {
+  search?: string
+  category?: string
+  isFeatured?: boolean
+}) => {
+  const andConditions: TutorProfileWhereInput[] = []
+
+  if (search) {
+    andConditions.push({
+      OR: [
+        {
+          subject: {
+            contains: search,
+            mode: "insensitive",
+          },
+        },
+        {
+          price: {
+            contains: search,
+            mode: "insensitive",
+          },
+        },
+        {
+          reviews:{
                         some:{
                             rating: search as string
                         }
                     }
-                }
-                
-            ]})
-    }
+        },
+      ],
+    })
+  }
 
-    if(category){
-        andConditions.push({
-             category: {
+  if (category) {
+    andConditions.push({
+      category: {
         name: {
-        contains:category as string,
-        mode: "insensitive",
+          contains: category,
+          mode: "insensitive",
         },
-    },
-        })
-    }
+      },
+    })
+  }
 
-    if(typeof isFeatured === 'boolean'){
-        andConditions.push({
-            isFeatured: isFeatured
-        })
-    }
-    
-    
-    const result =await prisma.tutorProfile.findMany({
-        where: {
-            AND:andConditions
-            
-            
+  if (typeof isFeatured === "boolean") {
+    andConditions.push({
+      isFeatured,
+    })
+  }
+
+  const result = await prisma.tutorProfile.findMany({
+    where: andConditions.length ? { AND: andConditions } : {},
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          image: true,
         },
-        include: {
-  reviews: {
-    select: {
-      rating: true,
-      comment: true,
+      },
+      reviews: {
+        select: {
+          rating: true,
+          comment: true,
+        },
+      },
+      category: {
+        select: {
+          name: true,
+        },
+      },
     },
-  },
-  category: {
-    select: {
-      name: true,
-    },
-  },
+  })
+
+  return result
 }
 
-    });
-     return result;
-}
 
 // get tutor by id
 const getTutorById = async (id: string) => {
     const result = await prisma.tutorProfile.findUnique({
         where: { id },
+        include: {
+      user: true,
+    },
     });
     return result;
 }

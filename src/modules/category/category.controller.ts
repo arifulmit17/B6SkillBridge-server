@@ -14,4 +14,13 @@ const createCategory = async (req:Request, res:Response) => {
     
 }
 
-export const categoryController = { createCategory };
+const getAllCategories = async (req:Request, res:Response) => {
+    try{
+      const result = await categoryService.getAllCategories();
+      res.status(201).json(result);
+    }catch(e){
+        res.status(400).json({error: "Categories fetching failed",details:e});
+    }
+}
+
+export const categoryController = { createCategory, getAllCategories };
