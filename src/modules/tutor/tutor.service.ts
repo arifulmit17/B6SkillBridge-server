@@ -105,10 +105,42 @@ const getTutorById = async (id: string) => {
     });
     return result;
 }
+const getTutorByUserId = async (userId: string) => {
+  const result = await prisma.tutorProfile.findUnique({
+    where: {
+      userId: userId, // 👈 IMPORTANT FIX
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          image: true,
+        },
+      },
+      category: {
+        select: {
+          name: true,
+        },
+      },
+      reviews: {
+        select: {
+          rating: true,
+          comment: true,
+        },
+      },
+    },
+  })
+
+  return result
+}
+
 
 export const tutorService = { 
     createTutor,
     getAllTutors,
-    getTutorById
+    getTutorById,
+    getTutorByUserId
 
  };

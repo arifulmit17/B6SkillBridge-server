@@ -44,5 +44,18 @@ const getTutorById = async (req:Request, res:Response) => {
         res.status(400).json({error: "Tutor fetching failed",details:e});
     }
 }
+const getTutorByUserId = async (req:Request, res:Response) => {
+    try{
+        const {id}=req.query;
+        console.log(id);
+        if (!id) {
+            throw new Error("User Id is required!")
+        }
+        const result = await tutorService.getTutorByUserId(id as string);
+        res.status(200).json(result);
+    }catch(e){
+        res.status(400).json({error: "Tutor fetching failed",details:e});
+    }
+}
 
-export const tutorController = { createTutor, getAllTutors,getTutorById };
+export const tutorController = { createTutor, getAllTutors,getTutorById,getTutorByUserId };

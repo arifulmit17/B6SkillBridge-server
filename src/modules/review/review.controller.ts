@@ -16,9 +16,21 @@ const createReview = async (req:Request, res:Response) => {
 }
 const getReviewsByTutorId = async (req:Request, res:Response) => {
     try{
-        const id=req.query.tutorId;
-      const result = await reviewService.getReviewsByTutorId(id as string);
-      res.status(201).json(result);
+        const {tutorid}=req.query;
+        
+      const result = await reviewService.getReviewsByTutorId(tutorid as string);
+      res.status(200).json(result);
+    }catch(e){
+        res.status(400).json({error: "Review fetching failed",details:e});
+        
+    }
+}
+const getAllReviews = async (req:Request, res:Response) => {
+    try{
+        const {tutorid}=req.query;
+        
+      const result = await reviewService.getAllReviews();
+      res.status(200).json(result);
     }catch(e){
         res.status(400).json({error: "Review fetching failed",details:e});
         
@@ -26,4 +38,4 @@ const getReviewsByTutorId = async (req:Request, res:Response) => {
     
 }
 
-export const reviewController = { createReview,getReviewsByTutorId };
+export const reviewController = { createReview,getReviewsByTutorId,getAllReviews }
