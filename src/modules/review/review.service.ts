@@ -15,7 +15,7 @@ const createReview = async (data: Omit<Reviews, 'id' | 'createdAt' | 'updatedAt'
  }
 
  const getReviewsByTutorId=async (tutorId:string)=>{
-    console.log(tutorId);
+    
     const result= await prisma.reviews.findUnique({
         where: {tutorId}
     }

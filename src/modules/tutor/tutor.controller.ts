@@ -47,7 +47,7 @@ const getTutorById = async (req:Request, res:Response) => {
 const getTutorByUserId = async (req:Request, res:Response) => {
     try{
         const {id}=req.query;
-        console.log(id);
+        // console.log(id);
         if (!id) {
             throw new Error("User Id is required!")
         }
