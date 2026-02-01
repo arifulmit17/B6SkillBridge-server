@@ -25,4 +25,26 @@ const getAllTeachingSessions = async (req:Request, res:Response) => {
     
 }
 
-export const teachingSessionController = { createTeachingSession, getAllTeachingSessions };
+const updateTeachingSessionById = async (req:Request, res:Response) => {
+    try{
+        const {sessionId}=req.params;
+        console.log(sessionId);
+        
+        const result = await teachingSessionService.updateSessionById(sessionId as string,req.body);
+        res.status(200).json(result);
+    }catch(e){
+        res.status(400).json({error: "Teaching session update failed",details:e});
+    }
+}
+
+const deleteTeachingSessionById = async (req:Request, res:Response) => {
+    try{
+        const {sessionId}=req.params;
+        const result = await teachingSessionService.deleteSessionById(sessionId as string);
+        res.status(200).json(result);
+    }catch(e){
+        res.status(400).json({error: "Teaching session deletion failed",details:e});
+    }
+}
+
+export const teachingSessionController = { createTeachingSession, getAllTeachingSessions, deleteTeachingSessionById,updateTeachingSessionById };
