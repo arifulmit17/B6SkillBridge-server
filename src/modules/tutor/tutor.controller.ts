@@ -58,4 +58,18 @@ const getTutorByUserId = async (req:Request, res:Response) => {
     }
 }
 
-export const tutorController = { createTutor, getAllTutors,getTutorById,getTutorByUserId };
+const updateTutorById = async (req:Request, res:Response) => {
+    try{
+        const {tutorId}=req.params;
+        console.log(tutorId);
+        
+        const result = await tutorService.updateTutorById(tutorId as string,req.body);
+        res.status(200).json(result);
+    }catch(e){
+        res.status(400).json({error: "Tutor update failed",details:e});
+    }
+}
+
+
+
+export const tutorController = { createTutor, getAllTutors,getTutorById,getTutorByUserId,updateTutorById };

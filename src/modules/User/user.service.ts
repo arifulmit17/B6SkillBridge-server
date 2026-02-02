@@ -2,11 +2,22 @@ import { get } from "node:http";
 
 import { prisma } from "../../lib/prisma";
 
-const getCurrentUser = async (data: Omit<Reviews, 'id' | 'createdAt' | 'updatedAt'>) => {
-    const result = await prisma.reviews.create({
+
+
+const getAllUser=async ()=>{
+    const result =await prisma.user.findMany()
+    return result
+}
+
+const updateUserById=async (userId:string,data)=>{
+     console.log(data);
+    const result= await prisma.user.update({
+        where:{
+            id:userId
+        },
         data
     })
     return result;
-}
+ }
 
-export const reviewService = { getCurrentUser };
+export const userService = { getAllUser,updateUserById};

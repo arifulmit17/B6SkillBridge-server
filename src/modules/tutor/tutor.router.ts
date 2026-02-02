@@ -6,6 +6,7 @@ router.get('/user', tutorController.getTutorByUserId);
 router.get('/', tutorController.getAllTutors);
 
 router.get('/:id', tutorController.getTutorById);
+router.patch('/:id', tutorController.updateTutorById);
 router.post('/', tutorController.createTutor);
 
 
