@@ -136,11 +136,34 @@ const getTutorByUserId = async (userId: string) => {
   return result
 }
 
+const updateTutorById=async (tutorId:string,data:Partial<TutorProfile>)=>{
+     console.log(data);
+    const result= await prisma.tutorProfile.update({
+        where:{
+            id:tutorId
+        },
+        data
+    })
+    return result;
+ }
+
+const deleteTutorById=async (tutorId:string)=>{
+    
+    const result= await prisma.tutorProfile.delete({
+        where:{
+            id:tutorId
+        }
+    })
+    return result;
+ }
+
 
 export const tutorService = { 
     createTutor,
     getAllTutors,
     getTutorById,
-    getTutorByUserId
+    getTutorByUserId,
+    updateTutorById,
+    deleteTutorById
 
  };
