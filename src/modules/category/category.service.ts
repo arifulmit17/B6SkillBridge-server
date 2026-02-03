@@ -10,9 +10,42 @@ const createCategory = async (data: Omit<Category, 'id' | 'createdAt' | 'updated
 }
 
 const getAllCategories = async () => {
-    const result = await prisma.category.findMany();
-    return result;
+  const result = await prisma.category.findMany({
+    include: {
+      _count: {
+        select: {
+          tutors: true,
+          bookings: true,
+        },
+      },
+    },
+  })
+
+  return result
 }
 
-export const categoryService = { createCategory,getAllCategories };
+const updateCategoryById=async (categoryId:string,data:Partial<Category>)=>{
+     console.log(data);
+     const result= await prisma.category.update({
+         where:{
+             id:categoryId
+         },
+         data
+     })
+     return result;
+  }
+
+
+const deleteCategoryById=async (categoryId:string)=>{
+    
+    const result= await prisma.category.delete({
+        where:{
+            id:categoryId
+        }
+    })
+    return result;
+ }
+
+
+export const categoryService = { createCategory,getAllCategories,updateCategoryById,deleteCategoryById };
 

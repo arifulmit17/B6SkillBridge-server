@@ -25,7 +25,7 @@ const createReview = async (data: Omit<Reviews, 'id' | 'createdAt' | 'updatedAt'
 
  const updateReviewById=async (reviewId:string,data:Partial<Reviews>)=>{
       console.log(data);
-     const result= await prisma.tutorProfile.update({
+     const result= await prisma.reviews.update({
          where:{
              id:reviewId
          },
@@ -36,7 +36,7 @@ const createReview = async (data: Omit<Reviews, 'id' | 'createdAt' | 'updatedAt'
 
   const deleteReviewById=async (reviewId:string)=>{
     
-    const result= await prisma.tutorProfile.delete({
+    const result= await prisma.reviews.delete({
         where:{
             id:reviewId
         }
