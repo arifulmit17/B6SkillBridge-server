@@ -11,7 +11,12 @@ const createTeachingSession = async (data: Omit<Booking, 'id' | 'createdAt' | 'u
 }
 
  const getAllTeachingSessions = async ()=>{
-    const result= await prisma.booking.findMany();
+    const result= await prisma.booking.findMany({
+  include: {
+    tutor: true,
+    student: true,
+  },
+});
     return result;
  }
 
