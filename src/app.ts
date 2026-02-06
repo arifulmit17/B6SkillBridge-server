@@ -8,6 +8,7 @@ import { categoryRouter } from './modules/category/category.router';
 import { reviewRouter } from './modules/review/review.router';
 import { teachingSessionRouter } from './modules/teachingsession/teachingsession.router';
 import { userRouter } from './modules/User/user.router';
+import { availabilitySlot } from './modules/availability/availability.route';
 
 const app=express();
 
@@ -24,6 +25,7 @@ app.use("/api/categories",categoryRouter)
 app.use("/api/reviews",reviewRouter)
 app.use("/api/teachingsessions",teachingSessionRouter)
 app.use("/api/users",userRouter)
+app.use("/api/slots",availabilitySlot)
 
 app.get("/", (req, res) => {
     res.send("Welcome to the SkillBridge Server!");
