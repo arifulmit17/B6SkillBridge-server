@@ -1219,6 +1219,7 @@ export const AvailabilitySlotScalarFieldEnum = {
   tutorId: 'tutorId',
   dayOfWeek: 'dayOfWeek',
   isAvailable: 'isAvailable',
+  isBooked: 'isBooked',
   createdAt: 'createdAt'
 } as const
 
@@ -1230,6 +1231,7 @@ export const BookingScalarFieldEnum = {
   tutorId: 'tutorId',
   studentId: 'studentId',
   categoryId: 'categoryId',
+  availabilitySlotId: 'availabilitySlotId',
   startTime: 'startTime',
   endTime: 'endTime',
   status: 'status',

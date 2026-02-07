@@ -1,9 +1,11 @@
+
 import { Booking } from "../../generated/prisma/client";
 import { prisma } from "../../lib/prisma";
 
 
 
 const createTeachingSession = async (data: Omit<Booking, 'id' | 'createdAt' | 'updatedAt'>) => {
+    console.log(data);
     const result = await prisma.booking.create({
         data
     })
@@ -12,6 +14,7 @@ const createTeachingSession = async (data: Omit<Booking, 'id' | 'createdAt' | 'u
 
  const getAllTeachingSessions = async ()=>{
     const result= await prisma.booking.findMany({
+        
   include: {
     tutor: true,
     student: true,

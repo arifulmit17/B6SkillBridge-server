@@ -2,6 +2,7 @@ import { teachingSessionService } from "./teachingsession.service";
 import { Request, Response } from 'express';
 
 const createTeachingSession = async (req:Request, res:Response) => {
+    console.log(req.body);
     try{
       const result = await teachingSessionService.createTeachingSession(req.body);
       res.status(201).json(result);
