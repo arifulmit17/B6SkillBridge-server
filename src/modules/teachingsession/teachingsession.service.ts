@@ -41,6 +41,7 @@ const createTeachingSession = async (data: Omit<Booking, 'id' | 'createdAt' | 'u
             id:sessionId
         }
     })
+    console.log(result);
     return result;
  }
 

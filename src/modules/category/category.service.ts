@@ -20,8 +20,13 @@ const getAllCategories = async () => {
       },
     },
   })
-
   return result
+}
+const getCategoryById = async (id: string) => {
+    const result = await prisma.category.findUnique({
+        where: { id },
+    });
+    return result;
 }
 
 const updateCategoryById=async (categoryId:string,data:Partial<Category>)=>{
@@ -47,5 +52,5 @@ const deleteCategoryById=async (categoryId:string)=>{
  }
 
 
-export const categoryService = { createCategory,getAllCategories,updateCategoryById,deleteCategoryById };
+export const categoryService = { createCategory,getAllCategories,getCategoryById,updateCategoryById,deleteCategoryById };
 

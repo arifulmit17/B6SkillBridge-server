@@ -23,6 +23,19 @@ const getAllCategories = async (req:Request, res:Response) => {
     }
 }
 
+const getCategoryById = async (req:Request, res:Response) => {
+    try{
+        const {categoryId}=req.params;
+        if (!categoryId) {
+            throw new Error("Category Id is required!")
+        }
+        const result = await categoryService.getCategoryById(categoryId as string);
+        res.status(200).json(result);
+    }catch(e){
+        res.status(400).json({error: "Category fetching failed",details:e});
+    }
+}
+
 export const updateCategoryById = async (req: Request, res: Response) => {
   try {
     const { categoryId } = req.params
@@ -63,4 +76,4 @@ export const deleteCategoryById = async (req: Request, res: Response) => {
 }
 
 
-export const categoryController = { createCategory, getAllCategories ,updateCategoryById,deleteCategoryById};
+export const categoryController = { createCategory, getAllCategories,getCategoryById ,updateCategoryById,deleteCategoryById};
