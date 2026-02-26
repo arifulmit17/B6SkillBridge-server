@@ -24,14 +24,16 @@ const createTeachingSession = async (data: Omit<Booking, 'id' | 'createdAt' | 'u
  }
 
  const updateSessionById=async (sessionId:string,data:Partial<Booking>)=>{
-     console.log(data);
+     console.log(sessionId,data);
     const result= await prisma.booking.update({
         where:{
             id:sessionId
         },
         data
     })
+    console.log(result);
     return result;
+    
  }
 
  const deleteSessionById=async (sessionId:string)=>{
